@@ -1,225 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JUSTICE FOR RAMISA - DARKNET CYBER FORCE BD</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacked By Bangladesh Anonymous Cyber Force</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Rajdhani:wght@600&family=Creepster&display=swap" rel="stylesheet">
+    <style>
+        body, html { margin: 0; padding: 0; overflow: hidden; background: #000; }
 
-    body, html {
-      width: 100%;
-      min-height: 100vh;
-      font-family: 'Montserrat', sans-serif;
-      color: #fff;
-      overflow-x: hidden;
-      overflow-y: auto;
-      background: #000 url('https://i.ibb.co.com/Gv5Z4f9j/1774952257728.png') no-repeat center center fixed;
-      background-size: cover;
-    }
+        #bdcf-hacked-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.ibb.co/qrcP1rJ/storm-clouds.gif') center/cover fixed, #000;
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
+            z-index: 999999;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            overflow-y: auto;
+            padding: 20px 0;
+        }
 
-    .content-wrapper {
-      position: relative;
-      width: 90%;
-      max-width: 800px;
-      margin: 50px auto;
-      text-align: center;
-      z-index: 1;
-      background: rgba(0, 0, 0, 0.8);
-      padding: 30px;
-      border-radius: 15px;
-      border: 1px solid #ff0000;
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
-    }
+        .bdcf-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1;
+        }
 
-    .kalema {
-      width: 280px;
-      max-width: 90%;
-      margin-bottom: 20px;
-      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
-    }
+        .bdcf-content {
+            position: relative;
+            z-index: 2;
+            width: 95%;
+            max-width: 600px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 50px;
+        }
 
-    .logo-container {
-      perspective: 1000px;
-      display: inline-block;
-      margin-bottom: 10px;
-    }
+        .bdcf-kalema {
+            width: 80%;
+            max-width: 250px;
+            filter: drop-shadow(0 0 15px #fff);
+            animation: bdcfGlow 3s infinite alternate;
+            margin-bottom: 10px;
+        }
 
-    .logo {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      animation: flip3D 16s infinite linear;
-      transform-style: preserve-3d;
-      border: 2px solid #ff0000;
-    }
+        @keyframes bdcfGlow {
+            from { filter: drop-shadow(0 0 5px #fff); }
+            to { filter: drop-shadow(0 0 20px #ff0000); }
+        }
 
-    .hacked-text {
-      color: #ff0000;
-      font-size: 1.3rem;
-      margin-bottom: 20px;
-      text-shadow: 0 0 10px #ff0000;
-      font-weight: bold;
-    }
+        .bdcf-logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin: 20px 0;
+            width: 100%;
+        }
 
-    .image-box {
-      width: 100%;
-      margin: 20px 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+        .bdcf-logo {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 3px solid #ff0000;
+            box-shadow: 0 0 20px #ff0000;
+            animation: bdcfSpin 15s linear infinite;
+            object-fit: cover;
+        }
 
-    .image-box img {
-      max-width: 100%;
-      height: auto;
-      border: 2px solid #fff;
-      border-radius: 8px;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-    }
+        @keyframes bdcfSpin {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
 
-    @keyframes flip3D {
-      0% { transform: rotateY(0deg); }
-      100% { transform: rotateY(360deg); }
-    }
+        .bdcf-h1 {
+            font-family: 'Creepster', cursive;
+            font-size: 2.2rem;
+            color: #ff0000;
+            text-shadow: 0 0 15px #ff0000;
+            margin: 5px 0;
+        }
 
-    .title {
-      font-size: 1.6rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 20px;
-      color: #ff0000;
-      text-shadow: 2px 2px 10px #000;
-    }
+        .bdcf-team {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 0 10px #ff0000;
+            text-transform: uppercase;
+            line-height: 1.4;
+        }
 
-    #typing-text {
-      font-size: 1.1rem;
-      font-style: italic;
-      color: #ffcc00;
-      display: block;
-      margin-bottom: 15px;
-      min-height: 1.5em;
-      text-shadow: 1px 1px 5px #000;
-    }
+        .bdcf-box {
+            background: rgba(0, 0, 0, 0.85);
+            border: 1px solid #ff0000;
+            border-radius: 10px;
+            padding: 20px;
+            width: 90%;
+            text-align: left;
+            margin-top: 15px;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
+        }
 
-    .warning-red {
-      color: #ff0000;
-      font-weight: bold;
-      display: block;
-      margin: 15px 0;
-      font-size: 1.2rem;
-      text-transform: uppercase;
-      text-shadow: 0 0 5px #000;
-    }
+        .bdcf-box p {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            color: #e0e0e0;
+            border-left: 3px solid #ff0000;
+            padding-left: 12px;
+            line-height: 1.5;
+        }
 
-    .message-text p {
-      font-size: 1rem;
-      line-height: 1.7;
-      margin-bottom: 15px;
-      text-shadow: 1px 1px 8px #000;
-      text-align: justify;
-    }
+        .bdcf-hl { color: #ff0000; font-weight: bold; }
 
-    .credz-section {
-      font-size: 0.9rem;
-      margin-top: 35px;
-      color: #ccc;
-      letter-spacing: 1px;
-      border-top: 1px solid #444;
-      padding-top: 20px;
-    }
+        .bdcf-crdz {
+            border-top: 1px solid #ff000044;
+            padding-top: 15px;
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: #ff0000;
+            word-wrap: break-word;
+        }
 
-    .tg-text-link {
-      display: inline-block;
-      margin-top: 25px;
-      color: #ffcc00;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.2rem;
-      text-transform: uppercase;
-      text-shadow: 0 0 10px rgba(0, 0, 0, 1);
-    }
-  </style>
+        /* Entry Overlay */
+        #entry-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.88);
+            z-index: 9999999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        #entry-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .entry-box {
+            background: rgba(10, 0, 0, 0.95);
+            border: 2px solid #ff0000;
+            border-radius: 12px;
+            padding: 25px 40px;
+            text-align: center;
+            box-shadow: 0 0 50px rgba(255, 0, 0, 0.3), inset 0 0 30px rgba(255, 0, 0, 0.05);
+            animation: entryPulse 2s ease-in-out infinite;
+            max-width: 450px;
+        }
+        .entry-box h1 {
+            font-family: 'Creepster', cursive;
+            font-size: 2.5rem;
+            color: #ff0000;
+            text-shadow: 0 0 20px #ff0000;
+            margin: 0 0 5px 0;
+            letter-spacing: 2px;
+        }
+        .entry-box .sub-line {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            color: #cc0000;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+        .entry-box .tap-text {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1rem;
+            color: #888;
+            margin-top: 12px;
+            border-top: 1px solid #ff000033;
+            padding-top: 12px;
+        }
+        .entry-box .tap-text span {
+            color: #ff0000;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        @keyframes entryPulse {
+            0%, 100% { box-shadow: 0 0 40px rgba(255, 0, 0, 0.3), inset 0 0 20px rgba(255, 0, 0, 0.03); }
+            50% { box-shadow: 0 0 70px rgba(255, 0, 0, 0.5), inset 0 0 30px rgba(255, 0, 0, 0.08); }
+        }
+
+        /* Telegram Button */
+        .bdcf-telegram-btn {
+            display: inline-block;
+            background: #0088cc;
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            font-size: 0.85rem;
+            padding: 12px 30px;
+            border: 2px solid #0088cc;
+            border-radius: 50px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 20px;
+            transition: 0.3s;
+            box-shadow: 0 0 20px rgba(0, 136, 204, 0.4);
+        }
+        .bdcf-telegram-btn:hover {
+            background: transparent;
+            color: #0088cc;
+            box-shadow: 0 0 40px rgba(0, 136, 204, 0.7);
+        }
+
+        #bdcf-audio { display: none; }
+
+        @media (max-width: 480px) {
+            .bdcf-h1 { font-size: 1.6rem; }
+            .bdcf-team { font-size: 0.9rem; }
+            .bdcf-logo { width: 100px; height: 100px; }
+            .bdcf-kalema { max-width: 180px; }
+            .entry-box { padding: 20px 25px; margin: 0 15px; }
+            .entry-box h1 { font-size: 1.8rem; }
+        }
+    </style>
 </head>
-<body onclick="playMusic()" ontouchstart="playMusic()">
+<body>
 
-  <div class="content-wrapper">
-    <img src="https://i.ibb.co.com/MdyBkYh/1776880906546.png" alt="Kalema" class="kalema">
-    <br>
-    
-    <div class="logo-container">
-      <img src="https://i.ibb.co.com/xtbNSZXg/IMG-20260504-225451.jpg" alt="Logo" class="logo">
+<!-- Entry Overlay -->
+<div id="entry-overlay" onclick="enterDeface()">
+    <div class="entry-box">
+        <h1>⚠️ HACKED ⚠️</h1>
+        <div class="sub-line">This Site Hacked By BACF</div>
+        <div class="tap-text"><span>▶</span> TAP TO ENTER <span>◀</span></div>
     </div>
-    
-    <div class="hacked-text">☣ Hacked By DarkNet Cyber Force BD ☣</div>
+    <audio id="bdcf-audio" loop preload="auto">
+        <source src="https://d.top4top.io/m_3365khwoz1.mp3" type="audio/mpeg">
+    </audio>
+</div>
 
-    <div class="image-box">
-      <img src="https://i.ibb.co.com/WW9w6Dtz/received-984914103947125.jpg" alt="Justice Image">
+<div id="bdcf-hacked-wrapper">
+    <div class="bdcf-overlay"></div>
+
+    <div class="bdcf-content">
+        <img src="https://i.ibb.co.com/WNmvY0xs/IMG-20260126-084454-removebg-preview.png" alt="Kalema" class="bdcf-kalema">
+        
+        <div class="bdcf-logo-container">
+            <img src="https://i.ibb.co.com/8Dqw8RWh/IMG-20260618-193008-300.jpg" alt="BACF Logo" class="bdcf-logo">
+        </div>
+
+        <h2 class="bdcf-h1">Hacked By</h2>
+        <h1 class="bdcf-team">☢️ Bangladesh Anonymous Cyber Force ☢️</h1>
+
+        <div class="bdcf-box">
+            <p><span class="bdcf-hl">Hi Admin,</span></p>
+            <p>Your website has security vulnerabilities. We are an authorized penetration testing team, and we have successfully identified several critical security flaws in your system.</p>
+            <p><span class="bdcf-hl">Findings:</span> SQL Injection, XSS, Local File Inclusion, and misconfigured security headers were found. Immediate action is required to patch these vulnerabilities.</p>
+            <p>This is a responsible security assessment conducted with proper authorization. We recommend you contact your security team and fix the issues as soon as possible.</p>
+            <p><span class="bdcf-hl">Stay safe, stay secure.</span></p>
+            
+            <div class="bdcf-crdz">
+                <b>Crdz :</b> Captain X DarkRoot | Anonymous Sainad | Benjellah Xut | Blade X DarkRoot | DarkPrsim | Mohammad X DarkRoot | Venom X DarkRoot | Alex Hunter | DarkRoot | DarkRoot Xyber 404 | Sh@Dow | DarkFlay | TyraxZero Rooted | Ibn Abbas | Sailent Killer | Hacked X DarkRoot | Shadow X DarkRoot <br>
+                <em style="color:#666; font-size:0.75rem;">(I have permission and am authorized to perform this pentest)</em>
+            </div>
+        </div>
+
+        <a class="bdcf-telegram-btn" href="https://t.me/we_are_team_bacf" target="_blank" rel="noopener">🔺 JOIN OUR TELEGRAM 🔺</a>
     </div>
+</div>
 
-    <div class="title">
-      ⚖️ JUSTICE FOR OUR SISTER ⚖️
-    </div>
-
-    <div class="message-text">
-      <span id="typing-text"></span>
-      <span class="warning-red">--- JUSTICE DELAYED IS JUSTICE DENIED ---</span>
-      
-      <p>She was our little sister, but today she stands as a tragic symbol of administrative failure. The brutal rape and murder of an innocent child by slitting her throat is an act of savagery that no civilized society can tolerate. Where the administration’s duty is to ensure swift punishment, a culture of impunity is swallowing us whole.</p>
-
-      <p><b>Our Demands and Warning:</b><br>
-      • Public Execution for Ramisa's Killers: No murderer should walk free under any pretext or political protection.<br>
-      • Administrative Accountability: Why is the judicial process delayed? Why is the administration indifferent? We demand a transparent and swift trial.<br>
-      • Ensure a Safe Bangladesh: Our protests will not cease until this demonic brutality against our mothers and sisters is stopped.</p>
-
-      <p><b>"WE ARE DARKNET CYBER FORCE BD"</b><br>
-      When the administration remains silent, our keyboards roar. In this reign of injustice, we will continue our fight until justice for our sister is served.</p>
-      
-      <span class="warning-red">SHAME ON THE SYSTEM</span>
-      
-      <p style="text-align: center; font-style: italic;">"To those blinded by the greed for power—remember, the day public's rage erupts like a volcano, you will find no place to hide. We are watching every move."</p>
-    </div>
-
-    <div class="credz-section">
-      [ 🥀 ] REST IN PEACE, LITTLE SISTER. WE WILL GET YOU JUSTICE. [ 🥀 ]<br><br>
-      | We Are: Captain X DarkRoot | Benjellah Xut | Blade X DarkRoot | Harem Wer | TyranRoot | Darkprism | R.Y.L-T-71 | Venom X DarkRoot | DarkRoot Xyber 404 | Salient Killer|
-    </div>
-
-    <a href="https://t.me/DarkNet_Cyber_Force_BD" class="tg-text-link">Join Telegram</a>
-  </div>
-
-  <audio id="myAudio" loop>
-    <source src="https://files.catbox.moe/wqaqua.m4a" type="audio/mp4">
-  </audio>
-
-  <script>
-    const typingElement = document.getElementById("typing-text");
-    const textToType = "— Every Soul Deserves Justice. We Will Not Remain Silent —";
-    let charIndex = 0;
-
-    function startTyping() {
-      if (charIndex < textToType.length) {
-        typingElement.innerHTML += textToType.charAt(charIndex);
-        charIndex++;
-        setTimeout(startTyping, 60);
-      }
+<script>
+    function enterDeface() {
+        var audio = document.getElementById("bdcf-audio");
+        audio.volume = 0.5;
+        audio.play().catch(function(e) {
+            console.log("Audio autoplay blocked or error:", e);
+        });
+        document.getElementById("entry-overlay").classList.add("hidden");
     }
-
-    const audio = document.getElementById("myAudio");
-    let isPlaying = false;
-
-    function playMusic() {
-      if (!isPlaying) {
-        audio.play().then(() => {
-          isPlaying = true;
-        }).catch(e => console.log("Playback failed"));
-      }
-    }
-
-    window.onload = startTyping;
-  </script>
+</script>
 
 </body>
-</html>
+                 </html>
